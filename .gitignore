@@ -50,3 +50,5 @@ builds/**/images/*
 *.pem
 *.xxjson
 Go Training Stuffs.md
+test
+
