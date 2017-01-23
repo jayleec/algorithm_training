@@ -1,38 +1,28 @@
 package main
 
 import (
-	"math/rand"
-	"time"
 	"fmt"
+	"github.com/jayleec/algorithm_training/algoutils"
 )
 
-func main(){
+func main() {
 
-	slice := SliceGenerator(10)
+	slice := algoutils.GenerateSlice(10)
 	fmt.Println("Unsorted: ", slice)
 
 	fmt.Println("Sorted: ", InsertionSort(slice))
 }
 
-func InsertionSort(slice []int) []int{
-	v, j := 0,0
-	for i:=1 ; i< len(slice); i++{
-		v = slice[i]
+func InsertionSort(slice []int) []int {
+	var i, j, temp int
+	for i = 1; i < len(slice); i++ {
+		temp = slice[i]
 		j = i
-		for j >= 1 && slice[j - 1] > v{
-			slice[j] = slice[j - 1]
+		for j >= 1 && slice[j-1] > temp {
+			slice[j] = slice[j-1]
 			j = j - 1
 		}
-		slice[j] = v
+		slice[j] = temp
 	}
 	return slice
-}
-
-func SliceGenerator(size int)[]int {
-	rand.Seed(time.Now().UnixNano())
-	temp := []int{}
-	for i := 0 ; i< size ; i++{
-		temp = append(temp, rand.Intn(88))
-	}
-	return temp
 }
