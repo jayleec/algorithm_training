@@ -7,26 +7,31 @@ import (
 
 func main() {
 
-	Array := []int{3, 7, 2, 8, 4, 1, 9, 10, 6, 5}
+	slice := algoutils.GenerateSlice(10)
+	fmt.Println("Unsorted: ", slice)
+	fmt.Println("Sorted: ", shellSort(slice))
 
-	shellSort(Array)
-
-	fmt.Println(Array)
 }
 
-func shellSort(A []int) {
-	h := 1
-	for h < len(A) {
-		h = h * 3 + 1
+func shellSort(slice []int) []int{
+	var inner, outer, interval, temp int
+	interval = 1
+	for interval < len(slice){
+		interval = interval * 3 + 1
 	}
 
-	for h > 0 {
-		for i := 1; i < len(A); i++{
-			for j:=i ; j >= h && A[j- h] > A[j]; j = j - h {
-				algoutils.Swap(A, j, j - h)
+	for interval > 0{
+		for outer = interval; outer < len(slice) ;outer++{
+			temp = slice[outer]
+			inner = outer
+			for inner >= interval && slice[inner - interval] > temp {
+				slice[inner] = slice[inner - interval]
+				inner = inner - interval
 			}
+			slice[inner] = temp
 		}
-
-		h = h /3
+		interval = interval / 3
 	}
+
+	return slice
 }
