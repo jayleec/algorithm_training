@@ -1,10 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/jayleec/algorithm_training/algoutils"
+)
 
 func main(){
-	tempList := []int{6,5,7,4,8,3,2,9,10,1}
-	fmt.Println(MergeSort(tempList))
+	slice := algoutils.GenerateSlice(11)
+	fmt.Println("Unsorted : ", slice)
+	fmt.Println("Sorted : ", MergeSort(slice))
 
 }
 
