@@ -25,6 +25,7 @@ _testmain.go
 
 # WebStorm
 *.iml
+heap
 
 # Directory-based project format:
 .idea/
