@@ -13,12 +13,10 @@ func main(){
 
 func QuickSort(slice []int, low, high int)[]int {
 	var pivot int
-	if high > low {
+	if low < high {
 		pivot = Partition(slice, low, high)
-		QuickSort(slice, low, pivot - 1)
-		//fmt.Println("1: ", slice)
+		QuickSort(slice, low, pivot)
 		QuickSort(slice, pivot + 1 , high)
-		//fmt.Println("2: ", slice)
 	}
 	return slice
 }
@@ -30,17 +28,10 @@ func Partition(slice []int, low, high int) int {
 	for i:= low + 1; i<= high; i++{
 		if slice[i] < pivot {
 			wall = wall + 1
-			Swap(slice, i, wall)
+			algoutils.Swap(slice, i, wall)
 		}
 	}
 	//pivot <-> wall
-	Swap(slice, low, wall)
+	algoutils.Swap(slice, low, wall)
 	return wall
 }
-
-func Swap(slice []int, a, b int) {
-	temp := slice[a]
-	slice[a] = slice[b]
-	slice[b] = temp
-}
-
